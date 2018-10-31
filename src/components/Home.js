@@ -26,6 +26,7 @@ const styles = (theme) => ({
   },
   grow: {
     flexGrow: 1,
+    textAlign: 'center',
   },
   menuButton: {
     marginLeft: -12,
@@ -66,12 +67,12 @@ class Home extends React.Component {
             <Typography variant="h6" color="inherit" className={classes.grow}>
               Uncharted VPN
             </Typography>
-            <Button color="inherit">Login / SignUp</Button>
+            <Button color="inherit" href="/login">Login / SignUp</Button>
           </Toolbar>
         </AppBar>
         <div className={classes.root}>
           <Grid container alignItems="center" justify="center" style={{ height: 500 }}>
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{textAlign: 'center'}}>
               <div item style={{color: 'white', fontSize: '4em', fontWeight: 'bold', padding: '160px 0 20px 0'}}>
                 Reliable VPN Service
               </div>
