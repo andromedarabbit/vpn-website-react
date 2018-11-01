@@ -78,8 +78,8 @@ class Home extends React.Component {
         <div className={classes.root}>
           <Grid container alignItems="center" justify="center" style={{ height: 500 }}>
             <Grid item xs={12} style={{textAlign: 'center'}}>
-              <div item style={{color: 'white', fontSize: '4em', fontWeight: 'bold', padding: '160px 0 20px 0'}}>
-                Reliable VPN Service
+              <div item style={{padding: '160px 0 20px 0'}}>
+                <Typography variant="display4">Reliable VPN Service</Typography>
               </div>
               <Button variant="extendedFab" className={classes.button}>
                 <CloudDownloadIcon className={classes.extendedIcon} />
