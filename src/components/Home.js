@@ -4,6 +4,9 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Button,
+  Card,
+  CardContent,
+  CardMedia,
   Divider,
   Grid,
   IconButton,
@@ -11,11 +14,12 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import {Link} from "react-router-dom";
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import ExploreIcon from '@material-ui/icons/Explore';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import img0502 from '../assets/anakwa_tothesememories.jpg';
-import logoWireguard from '../assets/wireguard.svg';
-import { red } from 'ansi-colors';
 
 const styles = (theme) => ({
   root: {
@@ -62,17 +66,13 @@ class Home extends React.Component {
         <div style={{zIndex: -1, position: 'absolute', top: 0, width:'100%', height: 500, backgroundImage: `url(${img0502})`, backgroundRepeat:'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
         <AppBar className={classes.appBar} color="default">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
-            
             <div className={classes.grow}>
               <Button color="inherit" href="/" disableRipple={true} disableFocusRipple={true}>
                 <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
               </Button>
             </div>
             
-            <Button color="inherit" href="/login">Login / SignUp</Button>
+            <Button color="inherit" style={{position:'absolute', right: 10}}><Link to="/login">Login / SignUp</Link></Button>
           </Toolbar>
         </AppBar>
         <div className={classes.root}>
@@ -156,9 +156,59 @@ class Home extends React.Component {
             </Grid>
           </Grid>
           <Grid container spacing={24} xs={12} justify="center" style={{marginTop: 20}}>
-            <Grid className={classes.description} item>
-              <img src={logoWireguard} width="200" /><br />
-              Our service base on Wireguard aims to be faster, simpler, leaner, and more useful than IPSec.
+            <Grid xs={7} item>
+              <Typography variant="h5" component="h2">
+                Why use Our Service?
+              </Typography>
+            </Grid>
+            <Grid className={classes.description} xs={7} item>
+              <Card style={{marginBottom: 20}}>
+                <CardContent style={{display: 'flex', flexDirection: 'row'}}>
+                  <div style={{marginRight: 20}}>
+                    <VerifiedUserIcon style={{fontSize: '4em', height: '100%'}} />
+                  </div>
+                  <div style={{flex: 1}}>
+                    <Typography variant="subtitle1">
+                      Uncharted VPN makes secure environment.
+                    </Typography>
+                    <Typography variant="body2">
+                      Cutting-edge technologies protect your Internet activity from hackers and malware on public Wi-Fi networks.
+                    </Typography>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card style={{marginBottom: 20}}>
+                <CardContent style={{display: 'flex', flexDirection: 'row'}}>
+                  <div style={{marginRight: 20}}>
+                    <VisibilityOffIcon style={{fontSize: '4em', height: '100%'}} />
+                  </div>
+                  <div style={{flex: 1}}>
+                    <Typography variant="subtitle1">
+                      Hide your browsing history.
+                    </Typography>
+                    <Typography variant="body2">
+                      We do not log user internet activity and share data with third parties.<br />
+                      Our VPN service enables internet activity without spying.
+                    </Typography>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card style={{marginBottom: 20}}>
+                <CardContent style={{display: 'flex', flexDirection: 'row'}}>
+                  <div style={{marginRight: 20}}>
+                    <ExploreIcon style={{fontSize: '4em', height: '100%'}} />
+                  </div>
+                  <div style={{flex: 1}}>
+                    <Typography variant="subtitle1">
+                      Free surfing internet without restrictions
+                    </Typography>
+                    <Typography variant="body2">
+                      Uncharted VPN protect the journalists and activists who use our service.<br />
+                      We breaks down the barriers of Internet censorship, you can access any website or content.
+                    </Typography>
+                  </div>
+                </CardContent>
+              </Card>
             </Grid>
           </Grid>
         </div>

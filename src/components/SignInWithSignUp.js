@@ -75,18 +75,14 @@ class SignInWithSignUp extends React.Component {
       <div className={classes.root}>
         <AppBar className={classes.appBar} color="default">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-              <MenuIcon />
-            </IconButton>
             <div className={classes.grow}>
               <Button color="inherit" href="/" disableRipple={true} disableFocusRipple={true}>
                 <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
               </Button>
             </div>
-            <Button disabled={true} href="/login" style={{color: 'transparent'}}>Login / SignUp</Button>
           </Toolbar>
         </AppBar>
-        <Grid className={classes.containerGrid} justify="center" container style={{padding: 100}}>
+        <Grid className={classes.containerGrid} justify="center" container style={{padding: 50}}>
           <Grid item style={{borderRight: "1px solid black", padding: 100}}>
             <form className={classes.containerForm} noValidate autoComplete="off">
               <TextField
@@ -113,7 +109,7 @@ class SignInWithSignUp extends React.Component {
                 autoComplete="current-password"
                 margin="normal"
               />
-              <Button variant="extendedFab" className={classes.button}>
+              <Button variant="contained" className={classes.button} style={{marginTop: 20}}>
                 Register Account
               </Button>
             </form>
@@ -136,7 +132,7 @@ class SignInWithSignUp extends React.Component {
                 autoComplete="current-password"
                 margin="normal"
               />
-              <Button variant="extendedFab" className={classes.button}>
+              <Button variant="contained" className={classes.button} style={{marginTop: 20}}>
                 Sign In
               </Button>
             </form>
