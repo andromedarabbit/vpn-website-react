@@ -4,14 +4,14 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import LogInWithSignUp from './components/LogInWithSignUp';
+import SignInWithSignUp from './components/SignInWithSignUp';
 import Home from './components/Home';
 
 class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path='/login' component={LogInWithSignUp}/>
+        <Route path='/login' component={SignInWithSignUp}/>
         <Route component={Home}/>
         {/* <Route path='/contact' component={Contact}/> */}
       </Switch>

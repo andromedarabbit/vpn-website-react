@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import img0502 from '../assets/anakwa_tothesememories.jpg';
 import logoWireguard from '../assets/wireguard.svg';
+import { red } from 'ansi-colors';
 
 const styles = (theme) => ({
   root: {
@@ -64,9 +65,13 @@ class Home extends React.Component {
             <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-              Uncharted VPN
-            </Typography>
+            
+            <div className={classes.grow}>
+              <Button color="inherit" href="/" disableRipple={true} disableFocusRipple={true}>
+                <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
+              </Button>
+            </div>
+            
             <Button color="inherit" href="/login">Login / SignUp</Button>
           </Toolbar>
         </AppBar>
