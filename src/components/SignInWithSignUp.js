@@ -2,30 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
-  AppBar,
   Button,
-  Divider,
   Grid,
-  IconButton,
-  Paper,
   TextField,
-  Toolbar,
-  Typography,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import { black, red } from 'ansi-colors';
+import TopBar from '../components/TopBar';
 
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-  },
-  appBar: {
-    marginBottom: 2,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)'
-  },
-  grow: {
-    flexGrow: 1,
-    textAlign: 'center',
   },
   menuButton: {
     marginLeft: -12,
@@ -73,15 +58,7 @@ class SignInWithSignUp extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar className={classes.appBar} color="default">
-          <Toolbar>
-            <div className={classes.grow}>
-              <Button color="inherit" href="/" disableRipple={true} disableFocusRipple={true}>
-                <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
-              </Button>
-            </div>
-          </Toolbar>
-        </AppBar>
+        <TopBar />
         <Grid className={classes.containerGrid} justify="center" container style={{padding: 50}}>
           <Grid item style={{borderRight: "1px solid black", padding: 100}}>
             <form className={classes.containerForm} noValidate autoComplete="off">

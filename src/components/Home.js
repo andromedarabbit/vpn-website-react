@@ -2,36 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import {
-  AppBar,
   Button,
   Card,
   CardContent,
-  CardMedia,
   Divider,
   Grid,
-  IconButton,
   Paper,
-  Toolbar,
   Typography,
 } from '@material-ui/core';
-import {Link} from "react-router-dom";
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import ExploreIcon from '@material-ui/icons/Explore';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 import img0502 from '../assets/anakwa_tothesememories.jpg';
+import TopBar from '../components/TopBar';
 
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
-  },
-  appBar: {
-    marginBottom: 2,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)'
-  },
-  grow: {
-    flexGrow: 1,
-    textAlign: 'center',
   },
   menuButton: {
     marginLeft: -12,
@@ -64,17 +52,7 @@ class Home extends React.Component {
     return (
       <div className={classes.root}>
         <div style={{zIndex: -1, position: 'absolute', top: 0, width:'100%', height: 500, backgroundImage: `url(${img0502})`, backgroundRepeat:'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}></div>
-        <AppBar className={classes.appBar} color="default">
-          <Toolbar>
-            <div className={classes.grow}>
-              <Button color="inherit" href="/" disableRipple={true} disableFocusRipple={true}>
-                <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
-              </Button>
-            </div>
-            
-            <Button color="inherit" style={{position:'absolute', right: 10}}><Link to="/login">Login / SignUp</Link></Button>
-          </Toolbar>
-        </AppBar>
+        <TopBar />
         <div className={classes.root}>
           <Grid container alignItems="center" justify="center" style={{ height: 500 }}>
             <Grid item xs={12} style={{textAlign: 'center'}}>
