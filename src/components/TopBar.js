@@ -33,7 +33,8 @@ class TopBar extends React.Component {
             </Button>
           </div>
           
-          <Button color="inherit" style={{position:'absolute', right: 10}}><Link to="/login">Login / SignUp</Link></Button>
+          <Button color="inherit"><Link to="/signup">SIGNUP</Link></Button>
+          <Button color="inherit"><Link to="/login">LOGIN</Link></Button>
         </Toolbar>
       </AppBar>
     )
