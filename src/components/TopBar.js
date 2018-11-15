@@ -8,7 +8,6 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 const styles = theme => ({
@@ -50,7 +49,7 @@ class TopBar extends React.Component {
               </Button>
             </Grid>
 
-            <Grid item xs={2}>
+            <Grid item xs={2} style={{textAlign: "right"}}>
               <Button color="inherit" onClick={this._onClickSignUp}>SIGNUP</Button>
               <Button color="inherit" onClic={this._onClickLogin}>LOGIN</Button>
             </Grid>

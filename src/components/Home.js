@@ -56,7 +56,7 @@ class Home extends React.Component {
         <div className={classes.root}>
           <Grid container alignItems="center" justify="center" style={{ height: 500 }}>
             <Grid item xs={12} style={{textAlign: 'center'}}>
-              <div item style={{padding: '160px 0 20px 0'}}>
+              <div item style={{paddingBottom: 20}}>
                 <Typography variant="display4">Reliable VPN Service</Typography>
               </div>
               <Button variant="extendedFab" className={classes.button}>
