@@ -4,14 +4,15 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   AppBar,
   Button,
+  Grid,
   Toolbar,
   Typography,
 } from '@material-ui/core';
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
-const styles = (theme) => ({
+const styles = theme => ({
   appBar: {
-    marginBottom: 2,
     backgroundColor: 'rgba(255, 255, 255, 0.8)'
   },
   grow: {
@@ -21,20 +22,39 @@ const styles = (theme) => ({
 });
 
 class TopBar extends React.Component {
+  _onClickSignUp = event => {
+    this.props.history.push({pathname: "/signup"});
+  }
+
+  _onClickLogin = event => {
+    this.props.history.push({pathname: "/login"});
+  }
+
+  _onClickHome = event => {
+    this.props.history.push({pathname: "/"});
+  }
+
   render () {
     const { classes } = this.props;
     
     return (
-      <AppBar className={classes.appBar} color="default">
+      <AppBar position="sticky" className={classes.appBar} color="default">
         <Toolbar>
-          <div className={classes.grow}>
-            <Button color="inherit" href="/" disableRipple={true} disableFocusRipple={true}>
-              <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
-            </Button>
-          </div>
-          
-          <Button color="inherit"><Link to="/signup">SIGNUP</Link></Button>
-          <Button color="inherit"><Link to="/login">LOGIN</Link></Button>
+          <Grid container alignItems="center">
+            <Grid item xs={2}>
+            </Grid>
+
+            <Grid item xs={8} style={{textAlign: "center"}}>
+              <Button color="inherit" disableRipple={true} disableFocusRipple={true} onClick={this._onClickHome}>
+                <Typography variant="h6" color="inherit">Uncharted VPN</Typography>
+              </Button>
+            </Grid>
+
+            <Grid item xs={2}>
+              <Button color="inherit" onClick={this._onClickSignUp}>SIGNUP</Button>
+              <Button color="inherit" onClic={this._onClickLogin}>LOGIN</Button>
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
     )
@@ -45,4 +65,4 @@ TopBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(TopBar);
+export default withStyles(styles)(withRouter(TopBar));
