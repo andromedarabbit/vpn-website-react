@@ -12,6 +12,17 @@ import {
   Typography,
 } from '@material-ui/core';
 import TopBar from '../components/TopBar';
+import Isemail from 'isemail';
+import PasswordValidator from 'password-validator';
+
+const schema = new PasswordValidator()
+  .is().min(8)
+  .is().max(128)
+  .has().uppercase()
+  .has().lowercase()
+  .has().digits()
+  .has().not().spaces()
+  .is().not().oneOf(['12345678', 'qwertyui']);
 
 const tiers = [
   {
@@ -70,26 +81,57 @@ const styles = (theme) => ({
 });
 
 class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      selectedValue: '1 Month',
-    }
+  state = {
+    email: '',
+    password: '',
+    selectedValue: '1 Month',
+    validatedEmail: true,
+    validatedPassword: true,
+    validatedConfirmPassword: true,
   }
 
-  handleChange = name => event => {
+  _handleChangeEmail = (event) => {
     this.setState({
-      [name]: event.target.value,
+      email: event.target.value,
+      validatedEmail: Isemail.validate(event.target.value),
     });
   };
 
-  _handleChangeSubscription = event => {
+  _handleChangePassword = (event) => {
+    this.setState({
+      password: event.target.value,
+      validatedPassword: schema.validate(event.target.value),
+    });
+  }
+
+  _handleChangeConfirmPassword = (event) => {
+    this.setState({
+      confirmPassword: event.target.value,
+      validatedConfirmPassword: schema.validate(event.target.value) && this.state.password === event.target.value,
+    })
+  }
+
+  _onClickRegister = () => {
+    const { 
+      email, 
+      password, 
+      confirmPassword,
+      validatedEmail,
+      validatedPassword,
+      validatedConfirmPassword,
+    } = this.state;
+    if (email.length > 0 && password.length > 0 && confirmPassword.length > 0) {
+      if (validatedEmail && validatedPassword && validatedConfirmPassword) {
+        console.info('Go to payment!');
+      }
+    }
+  }
+
+  _handleChangeSubscription = (event) => {
     this.setState({ selectedValue: event.target.value });
   };
 
-  _handleChangeSubscriptionFromCard = value => {
+  _handleChangeSubscriptionFromCard = (value) => {
     this.setState({ selectedValue: value });
   };
 
@@ -140,30 +182,40 @@ class SignUp extends React.Component {
             <Grid item xs={12} style={{ padding: 50 }}>
               <form className={classes.containerForm} noValidate autoComplete="off">
                 <TextField
+                  error={!this.state.validatedEmail}
                   id="signup-email"
                   label="E-mail"
                   className={classes.textField}
                   value={this.state.email}
-                  onChange={this.handleChange('email')}
+                  onChange={this._handleChangeEmail}
                   margin="normal"
                 />
                 <TextField
+                  error={!this.state.validatedPassword}
                   id="signup-password"
                   label="Password"
                   className={classes.textField}
                   type="password"
                   autoComplete="current-password"
+                  onChange={this._handleChangePassword}
                   margin="normal"
                 />
                 <TextField
+                  error={!this.state.validatedConfirmPassword}
                   id="signup-confirm-password"
                   label="Confirm Password"
                   className={classes.textField}
                   type="password"
                   autoComplete="current-password"
+                  onChange={this._handleChangeConfirmPassword}
                   margin="normal"
                 />
-                <Button variant="contained" className={classes.button} style={{marginTop: 20}}>
+                <Button 
+                  variant="contained" 
+                  className={classes.button} 
+                  style={{marginTop: 20}} 
+                  onClick={this._onClickRegister}
+                >
                   Register Account
                 </Button>
               </form>
