@@ -89,6 +89,10 @@ class SignUp extends React.Component {
     this.setState({ selectedValue: event.target.value });
   };
 
+  _handleChangeSubscriptionFromCard = value => {
+    this.setState({ selectedValue: value });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -102,7 +106,7 @@ class SignUp extends React.Component {
                 {
                   tiers.map((tier, index) => (
                     <Grid item key={index}>
-                      <Card>
+                      <Card raised={tier.title === this.state.selectedValue} onClick={() => this._handleChangeSubscriptionFromCard(tier.title)}>
                         <Radio
                           style={{ position: 'absolute' }}
                           checked={this.state.selectedValue === tier.title}
