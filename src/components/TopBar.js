@@ -51,7 +51,7 @@ class TopBar extends React.Component {
 
             <Grid item xs={2} style={{textAlign: "right"}}>
               <Button color="inherit" onClick={this._onClickSignUp}>SIGNUP</Button>
-              <Button color="inherit" onClic={this._onClickLogin}>LOGIN</Button>
+              <Button color="inherit" onClick={this._onClickLogin}>LOGIN</Button>
             </Grid>
           </Grid>
         </Toolbar>
