@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import SignUp from './components/SignUp';
-import SignInWithSignUp from './components/SignInWithSignUp';
+import SignIn from './components/SignIn';
 import Home from './components/Home';
 import Profile from './components/Profile';
 
@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Switch>
         <Route path='/signup' component={SignUp}/>
-        <Route path='/login' component={SignInWithSignUp}/>
+        <Route path='/login' component={SignIn}/>
         <Route path='/profile' component={Profile}/>
         <Route component={Home}/>
         {/* <Route path='/contact' component={Contact}/> */}

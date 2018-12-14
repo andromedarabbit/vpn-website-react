@@ -11,8 +11,10 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
-import TopBar from '../components/TopBar';
+import PaypalExpressBtn from 'react-paypal-express-checkout';
 import Isemail from 'isemail';
+
+import TopBar from '../components/TopBar';
 import PasswordValidator from 'password-validator';
 
 const schema = new PasswordValidator()
@@ -137,6 +139,10 @@ class SignUp extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const client = {
+      sandbox:    'AcChaex7HXXkoebqqIGJP1IbecUruQNXoQZZ1ulDhn86Vjvs82qX_WkY1niIwCcdTTqlvK3R71iCavi7',
+      production: 'YOUR-PRODUCTION-APP-ID',
+    }
 
     return (
       <React.Fragment>
@@ -218,6 +224,7 @@ class SignUp extends React.Component {
                 >
                   Register Account
                 </Button>
+                <PaypalExpressBtn client={client} currency={'USD'} total={1.00} style={{size: 'medium', shape: 'rect', color: 'gold', label: ''}} />
               </form>
             </Grid>
           </Grid>

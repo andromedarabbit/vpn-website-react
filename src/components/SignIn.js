@@ -38,7 +38,7 @@ const styles = (theme) => ({
   },
 });
 
-class SignInWithSignUp extends React.Component {
+class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,6 +53,18 @@ class SignInWithSignUp extends React.Component {
     });
   };
 
+  _onClickSignIn = () => {
+    const { 
+      email, 
+      password, 
+    } = this.state;
+
+    if (email.length > 0 && password.length > 0) {
+      console.info('Allow sign-in!');
+    }
+  }
+
+
   render() {
     const { classes } = this.props;
 
@@ -60,37 +72,6 @@ class SignInWithSignUp extends React.Component {
       <div className={classes.root}>
         <TopBar />
         <Grid className={classes.containerGrid} justify="center" container style={{padding: 50}}>
-          <Grid item style={{borderRight: "1px solid black", padding: 100}}>
-            <form className={classes.containerForm} noValidate autoComplete="off">
-              <TextField
-                id="signup-email"
-                label="E-mail"
-                className={classes.textField}
-                value={this.state.email}
-                onChange={this.handleChange('email')}
-                margin="normal"
-              />
-              <TextField
-                id="signup-password"
-                label="Password"
-                className={classes.textField}
-                type="password"
-                autoComplete="current-password"
-                margin="normal"
-              />
-              <TextField
-                id="signup-confirm-password"
-                label="Confirm Password"
-                className={classes.textField}
-                type="password"
-                autoComplete="current-password"
-                margin="normal"
-              />
-              <Button variant="contained" className={classes.button} style={{marginTop: 20}}>
-                Register Account
-              </Button>
-            </form>
-          </Grid>
           <Grid item style={{padding: 100}}>
             <form className={classes.containerForm} noValidate autoComplete="off">
               <TextField
@@ -108,8 +89,14 @@ class SignInWithSignUp extends React.Component {
                 type="password"
                 autoComplete="current-password"
                 margin="normal"
+                onChange={this.handleChange('password')}
               />
-              <Button variant="contained" className={classes.button} style={{marginTop: 20}}>
+              <Button 
+                variant="contained" 
+                className={classes.button} 
+                style={{marginTop: 20}}
+                onClick={this._onClickSignIn}
+              >
                 Sign In
               </Button>
             </form>
@@ -120,8 +107,8 @@ class SignInWithSignUp extends React.Component {
   }
 }
 
-SignInWithSignUp.propTypes = {
+SignIn.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SignInWithSignUp);
+export default withStyles(styles)(SignIn);
